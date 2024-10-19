@@ -1,33 +1,37 @@
-﻿<div class="container mt-5">
-    <div class="card">
-        <div class="card-header">
-            <h2>TV Shows</h2>
-        </div>
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
+﻿@model IEnumerable<ShowTracker.Models.Show>
+
+<a asp-controller="Shows" asp-action="Create" class="btn btn-success mb-3">Add New Show</a>
+
+
+
+<div class="container mt-5">
+    <h2>Shows List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
                     <tr>
-                        <th>Title</th>
-                        <th>Genre</th>
-                        <th>Rating</th>
-                        <th></th>
+                        <td>@item.Title</td>
+                        <td>@item.Genre</td>
+                        <td>@item.Rating</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.Title</td>
-                            <td>@item.Genre</td>
-                            <td>@item.Rating</td>
-                            <td>
-                                <a href="@Url.Action("Edit", new { id = item.ShowId })" class="btn btn-warning">Edit</a>
-                                <a href="@Url.Action("Delete", new { id = item.ShowId })" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">No shows available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
