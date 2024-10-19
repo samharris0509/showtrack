@@ -16,3 +16,26 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Set the background color of the entire site to green */
+body {
+    background-color: #ecf9e3;
+}
+
+/* Customize the navbar to have a brown background */
+.navbar {
+    background-color: #7d9669 !important;
+}
+
+    /* Change the text color of the navbar links to white */
+    .navbar .nav-link, .navbar .navbar-brand {
+        color: white !important;
+    }
+
+/* Apply the same brown color to the footer */
+footer {
+    background-color: #7d9669;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}

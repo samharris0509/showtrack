@@ -91,5 +91,26 @@ namespace ShowTracker.Controllers  // Make sure this matches your project namesp
         {
             return View(await _context.Shows.ToListAsync());
         }
+
+        // GET: Shows/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Shows/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Show show)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(show);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(show);
+        }
+
     }
 }
